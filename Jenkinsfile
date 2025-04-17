@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
-            steps {
-                git 'https://github.com/Ngozi-N/file-converter-app.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 script {
