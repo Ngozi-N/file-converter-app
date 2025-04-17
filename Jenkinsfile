@@ -2,14 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Test SSH Only') {
-            steps {
-                sshagent(['ec2-key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ec2-user@3.10.22.141 "echo connected successfully"'
-                }
-            }
-        }
-
         stage('Build & Push Docker Image') {
             steps {
                 script {
@@ -30,7 +22,7 @@ pipeline {
             steps {
                 sshagent(['ec2-key']) {
                     sh '''
-                        ssh -o StrictHostKeyChecking=no ec2-user@3.10.22.141 "
+                        ssh -o StrictHostKeyChecking=no ubuntu@3.10.22.141 "
                             docker pull ngozin/file-converter-app:latest &&
                             docker stop file-converter || true &&
                             docker rm file-converter || true &&
