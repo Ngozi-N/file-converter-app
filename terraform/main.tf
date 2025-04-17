@@ -69,10 +69,10 @@ resource "aws_route_table_association" "public_b" {
 # SSH Key
 # ---------------------------
 
-resource "aws_key_pair" "deployer" {
-  key_name   = var.key_name
-  public_key = file("~/.ssh/id_rsa.pub")
-}
+# resource "aws_key_pair" "deployer" {
+#   key_name   = var.key_name
+#   public_key = file("~/.ssh/id_rsa.pub")
+# }
 
 # ---------------------------
 # Security Group
